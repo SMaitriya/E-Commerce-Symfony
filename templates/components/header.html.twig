@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma Boutique</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+    <!-- Feather Icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
+</head>
+<body>
+    <header class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo à gauche -->
+                <div class="flex items-center">
+                    <i data-feather="shopping-bag" class="h-8 w-8 text-blue-500"></i>
+                    <span class="ml-2 text-xl font-bold text-gray-800">Ma Boutique</span>
+                </div>
+                
+                <!-- Navigation au centre -->
+                <div class="hidden md:flex items-center justify-center flex-1">
+                    <nav class="flex space-x-20">
+                        <a href="#" class="text-gray-600 hover:text-blue-500 font-medium">Accueil</a>
+                        <a href="#" class="text-gray-600 hover:text-blue-500 font-medium">Elegance</a>
+                        <a href="#" class="text-gray-600 hover:text-blue-500 font-medium">Sport</a>
+                    </nav>
+                </div>
+                
+                <!-- Icônes à droite -->
+                <div class="flex items-center space-x-6">
+                    <a href="#" class="text-gray-600 hover:text-blue-500 flex items-center">
+                        <i data-feather="shopping-cart" class="h-5 w-5"></i>
+                        <span class="ml-1">Panier</span>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-blue-500 flex items-center">
+                        <i data-feather="user" class="h-5 w-5"></i>
+                        <span class="ml-1">Compte</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <script>
+        // Initialisation des icônes Feather
+        feather.replace();
+    </script>
+</body>
+</html>

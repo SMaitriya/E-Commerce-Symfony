@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block content %}
+
+    <!-- Hero Section -->
+    <section class="bg-gray-100 text-center py-20">
+        <h1 class="text-5xl font-bold text-gray-800 mb-6">
+            Explorez nos chaussures
+        </h1>
+        <div class="mt-8 flex justify-center space-x-6">
+            <a href="#" class="px-8 py-4 bg-blue-600 text-white rounded-lg text-lg hover:bg-blue-700 transition">
+                Sport
+            </a>
+            <a href="#" class="px-8 py-4 bg-gray-800 text-white rounded-lg text-lg hover:bg-gray-900 transition">
+                Classique
+            </a>
+        </div>
+    </section>
+
+    <!-- Section Nouveautés -->
+    <section class="max-w-7xl mx-auto mt-16 px-6">
+        <h2 class="text-3xl font-bold text-gray-800 mb-10 text-center">
+            Nos nouveautés
+        </h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            <!-- Carte Produit 1 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="{{ asset('images/class-brownlong.webp') }}" alt="Produit 1" class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">Solsbury Easy</h3>
+                    <p class="text-gray-600 mb-4">Élégance et confort en cuir premium.</p>
+                    <span class="text-blue-600 font-bold">120€</span>
+                </div>
+            </div>
+
+            <!-- Carte Produit 2 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="{{ asset('images/sport-whiteglow.png') }}" alt="Produit 2" class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">White Runner</h3>
+                    <p class="text-gray-600 mb-4">Conçue pour vos performances sportives.</p>
+                    <span class="text-blue-600 font-bold">89€</span>
+                </div>
+            </div>
+
+            <!-- Carte Produit 3 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="{{ asset('images/class-black.webp') }}" alt="Produit 3" class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">Black Elegance</h3>
+                    <p class="text-gray-600 mb-4">Chaussure chic pour toutes occasions.</p>
+                    <span class="text-blue-600 font-bold">110€</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
