@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+  <div class="max-w-2xl mx-auto mt-16 px-6">
+    <div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+      <div class="text-center mb-8">
+        <svg class="w-16 h-16 text-green-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <h1 class="text-3xl font-bold text-gray-800">Validation de votre commande</h1>
+        <div class="h-1 w-20 bg-green-500 mx-auto mt-4 rounded-full"></div>
+      </div>
+      
+      <div class="space-y-6">
+        <div class="text-center text-gray-700">
+          <p class="text-xl mb-2">Merci <span class="font-semibold">{{ app.user.firstname ~ ' ' ~ app.user.lastname }}</span> !</p>
+          <p class="text-lg">Votre commande est validée.</p>
+        </div>
+        
+        <div class="bg-gray-50 p-4 rounded-lg border border-gray-100">
+          <h3 class="text-gray-700 font-medium mb-2">Détails de livraison :</h3>
+          <p class="text-gray-600">Votre commande sera livrée à l'adresse suivante dans quelques jours :</p>
+          <p class="mt-2 font-medium">{{ app.user.address }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

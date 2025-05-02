@@ -29,18 +29,31 @@
                 </div>
                 
                 <!-- Icônes à droite -->
-                <div class="flex items-center space-x-6">
-                    <a href="#" class="text-gray-600 hover:text-blue-500 flex items-center">
-                        <i data-feather="shopping-cart" class="h-5 w-5"></i>
-                        <span class="ml-1">Panier</span>
-                    </a>
-                    <a href="#" class="text-gray-600 hover:text-blue-500 flex items-center">
-                        <i data-feather="user" class="h-5 w-5"></i>
-                        <span class="ml-1">Compte</span>
-                    </a>
-                </div>
+<div class="flex items-center space-x-6 relative">
+    <a href="{{ path('app_cart') }}" class="text-gray-600 hover:text-blue-500 flex items-center">
+        <i data-feather="shopping-cart" class="h-5 w-5"></i>
+        <span class="ml-1">Panier</span>
+    </a>
+
+    {% if app.user %}
+        <div class="relative group">
+            <button class="text-gray-600 hover:text-blue-500 flex items-center">
+                <i data-feather="user" class="h-5 w-5"></i>
+                <span class="ml-1">Bonjour {{ app.user.firstName }}</span>
+            </button>
+            <div class="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-50">
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Mon compte</a>
+                <a href="{{ path('app_logout') }}" class="block px-4 py-2 text-sm text-red-600 hover:bg-red-50">Déconnexion</a>
             </div>
         </div>
+    {% else %}
+        <a href="{{ path('app_login') }}" class="text-gray-600 hover:text-blue-500 flex items-center">
+            <i data-feather="user" class="h-5 w-5"></i>
+            <span class="ml-1">Compte</span>
+        </a>
+    {% endif %}
+</div>
+
     </header>
     
     <script>

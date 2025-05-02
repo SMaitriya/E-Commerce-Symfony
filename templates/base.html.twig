@@ -6,21 +6,39 @@
     <title>{% block title %}Ma Boutique{% endblock %}</title>
 
     {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
-    {% endblock %}
+    <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
+{% endblock %}
 </head>
-<body class="bg-gray-100 text-gray-800 min-h-screen flex flex-col">
+<body class="bg-gray-100 min-h-screen flex flex-col">
 
     {% include 'components/header.html.twig' %}
 
     <main class="flex-1 container mx-auto p-8">
+
+        {% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="mx-auto max-w-2xl mt-4 px-4 py-3 rounded shadow text-white
+            {% if label == 'success' %} bg-green-500
+            {% elseif label == 'error' %} bg-red-500
+            {% elseif label == 'warning' %} bg-yellow-500
+            {% else %} bg-blue-500
+            {% endif %}">
+            {{ message }}
+            {% if label == 'success' %}
+                <a href="{{ path('app_cart') }}" class="ml-4 underline text-white font-semibold">Voir le panier</a>
+            {% endif %}
+        </div>
+    {% endfor %}
+{% endfor %}
+
+
+
         {% block content %}
         {% endblock %}
     </main>
 
     {% include 'components/footer.html.twig' %}
 
-
-    
 </body>
 </html>
+
