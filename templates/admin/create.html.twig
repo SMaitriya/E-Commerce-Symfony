@@ -1,0 +1,63 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block content %}
+  <div class="max-w-4xl mx-auto px-6 py-12">
+    <h1 class="text-3xl font-bold text-center  mb-10">Ajouter un produit</h1>
+
+    <div class="bg-gray-900 shadow-lg rounded-2xl p-8 text-gray-200">
+      {{ form_start(form, {'attr': {'enctype': 'multipart/form-data'}}) }}
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <div>
+            {{ form_label(form.name, null, {'label_attr': {'class': 'block text-sm font-medium mb-2'}}) }}
+            {{ form_widget(form.name, {'attr': {'class': 'w-full bg-gray-800 border border-gray-700 rounded-md p-2 text-white'}}) }}
+            {{ form_errors(form.name) }}
+          </div>
+
+          <div>
+            {{ form_label(form.price, null, {'label_attr': {'class': 'block text-sm font-medium mb-2'}}) }}
+            {{ form_widget(form.price, {'attr': {'class': 'w-full bg-gray-800 border border-gray-700 rounded-md p-2 text-white'}}) }}
+            {{ form_errors(form.price) }}
+          </div>
+
+          <div class="md:col-span-2">
+            <label for="product_imageFile" class="block text-sm font-medium mb-2">Image du produit</label>
+            <div class="flex items-center justify-center w-full">
+              <label for="product_imageFile" class="flex flex-col items-center justify-center w-full h-36 border-2 border-dashed rounded-lg cursor-pointer bg-gray-800 border-gray-600 hover:bg-gray-700 transition">
+                <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                  <svg class="w-8 h-8 mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M7 16V4m0 0l-3 3m3-3l3 3M17 8h2a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V10a2 2 0 012-2h2" />
+                  </svg>
+                  <p class="mb-2 text-sm text-gray-400"><span class="font-semibold">Glisser-déposer</span> ou cliquez pour choisir une image</p>
+                  <p class="text-xs text-gray-500">PNG, JPG - max 2MB</p>
+                </div>
+                {{ form_widget(form.imageFile, {'attr': {'class': 'hidden'}}) }}
+              </label>
+            </div>
+            {{ form_errors(form.imageFile) }}
+          </div>
+
+          <div class="md:col-span-2">
+            {{ form_label(form.category, null, {'label_attr': {'class': 'block text-sm font-medium mb-2'}}) }}
+            {{ form_widget(form.category, {'attr': {'class': 'w-full bg-gray-800 border border-gray-700 rounded-md p-2 text-white'}}) }}
+            {{ form_errors(form.category) }}
+          </div>
+        </div>
+
+        <div class="mb-6">
+          {{ form_label(form.description, null, {'label_attr': {'class': 'block text-sm font-medium mb-2'}}) }}
+          {{ form_widget(form.description, {'attr': {'class': 'w-full bg-gray-800 border border-gray-700 rounded-md p-2 text-white', 'rows': 4}}) }}
+          {{ form_errors(form.description) }}
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition">
+            Ajouter le produit
+          </button>
+        </div>
+
+      {{ form_end(form) }}
+    </div>
+  </div>
+{% endblock %}

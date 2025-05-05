@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Administration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     {% block stylesheets %}
+<script src="https://cdn.tailwindcss.com"></script>
+
+{% endblock %}
+</head>
+<body class="bg-gray-950 text-gray-100 min-h-screen">
+
+<header class="bg-gray-900 shadow-md px-6 py-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold text-white">Espace Admin</h1>
+
+    <div class="flex items-center space-x-6">
+        {% if app.user %}
+            <div class="relative group">
+                <button class="text-gray-200 hover:text-blue-400 flex items-center">
+                    <i data-feather="user" class="h-5 w-5"></i>
+                    <span class="ml-1">Bonjour {{ app.user.firstName }}</span>
+                </button>
+                <div class="absolute right-0 mt-2 w-40 bg-gray-800 rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-50">
+                    <a href="{{ path('app_logout') }}" class="block px-4 py-2 text-sm text-red-400 hover:bg-gray-700">Déconnexion</a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</header>
+
+<main class="p-6">
+
+     {% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="mx-auto max-w-2xl mt-4 px-4 py-3 rounded shadow text-white
+            {% if label starts with 'success' %} bg-green-500
+            {% elseif label == 'error' %} bg-red-500
+            {% elseif label == 'warning' %} bg-yellow-500
+            {% else %} bg-blue-500
+            {% endif %}">
+            
+            {{ message }}
+
+            {% if label == 'success_add_to_cart' %}
+                <a href="{{ path('app_cart') }}" class="ml-4 underline text-white font-semibold">Voir le panier</a>
+            {% endif %}
+        </div>
+    {% endfor %}
+{% endfor %}
+    {% block content %}{% endblock %}
+</main>
+
+
+</body>
+</html>

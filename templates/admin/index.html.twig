@@ -1,0 +1,49 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block content %}
+  <div class="max-w-7xl mx-auto px-6 py-10">
+
+    <div class="flex justify-end mb-6">
+      <a href="{{ path('admin_create') }}" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded shadow">
+        + Ajouter un produit
+      </a>
+    </div>
+
+    <div class="overflow-x-auto">
+      <table class="min-w-full text-sm text-left text-gray-200">
+        <thead class="bg-gray-800 text-xs uppercase text-gray-300">
+          <tr>
+            <th class="px-6 py-3">Image</th>
+            <th class="px-6 py-3">Nom</th>
+            <th class="px-6 py-3">Catégorie</th>
+            <th class="px-6 py-3">Prix</th>
+            <th class="px-6 py-3">Actions</th>
+          </tr>
+        </thead>
+        <tbody class="bg-gray-900">
+          {% for product in products %}
+            <tr class="border-b border-gray-700 hover:bg-gray-800">
+              <td class="px-6 py-4">
+                <img src="{{ asset('images/' ~ product.image) }}" alt="{{ product.name }}" class="w-16 h-16 object-cover rounded">
+              </td>
+              <td class="px-6 py-4 font-medium">{{ product.name }}</td>
+              <td class="px-6 py-4">{{ product.category.name }}</td>
+              <td class="px-6 py-4">{{ product.price }} €</td>
+              <td class="px-6 py-4 space-x-2">
+                <a href="{{ path('admin_edit', {id: product.id}) }}" class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded text-sm">Modifier</a>
+                <form method="post" action="{{ path('admin_delete', {id: product.id}) }}" class="inline-block" onsubmit="return confirm('Supprimer ce produit ?')">
+                  <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}">
+                  <button type="submit" class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-sm">Supprimer</button>
+                </form>
+              </td>
+            </tr>
+          {% else %}
+            <tr>
+              <td colspan="5" class="text-center text-gray-500 py-8">Aucun produit trouvé.</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}
