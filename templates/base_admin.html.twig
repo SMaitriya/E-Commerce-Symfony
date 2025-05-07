@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <title>Administration</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     {% block stylesheets %}
-<script src="https://cdn.tailwindcss.com"></script>
 
-{% endblock %}
+    {% block stylesheets %}
+        <script src="https://cdn.tailwindcss.com"></script>
+    {% endblock %}
 </head>
 <body class="bg-gray-950 text-gray-100 min-h-screen">
 
@@ -16,6 +16,7 @@
 
     <div class="flex items-center space-x-6">
         {% if app.user %}
+            {# Affichage du nom de l'utilisateur connecté avec un menu déroulant #}
             <div class="relative group">
                 <button class="text-gray-200 hover:text-blue-400 flex items-center">
                     <i data-feather="user" class="h-5 w-5"></i>
@@ -31,26 +32,28 @@
 
 <main class="p-6">
 
-     {% for label, messages in app.flashes %}
-    {% for message in messages %}
-        <div class="mx-auto max-w-2xl mt-4 px-4 py-3 rounded shadow text-white
-            {% if label starts with 'success' %} bg-green-500
-            {% elseif label == 'error' %} bg-red-500
-            {% elseif label == 'warning' %} bg-yellow-500
-            {% else %} bg-blue-500
-            {% endif %}">
-            
-            {{ message }}
+    {# Affichage conditionnel des messages flash (succès, erreur, etc.) #}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="mx-auto max-w-2xl mt-4 px-4 py-3 rounded shadow text-white
+                {% if label starts with 'success' %} bg-green-500
+                {% elseif label == 'error' %} bg-red-500
+                {% elseif label == 'warning' %} bg-yellow-500
+                {% else %} bg-blue-500
+                {% endif %}">
+                
+                {{ message }}
 
-            {% if label == 'success_add_to_cart' %}
-                <a href="{{ path('app_cart') }}" class="ml-4 underline text-white font-semibold">Voir le panier</a>
-            {% endif %}
-        </div>
+                {# Lien vers le panier si le message est lié à un ajout réussi #}
+                {% if label == 'success_add_to_cart' %}
+                    <a href="{{ path('app_cart') }}" class="ml-4 underline text-white font-semibold">Voir le panier</a>
+                {% endif %}
+            </div>
+        {% endfor %}
     {% endfor %}
-{% endfor %}
+
     {% block content %}{% endblock %}
 </main>
-
 
 </body>
 </html>

@@ -5,22 +5,30 @@
 
   <div class="container mx-auto px-8 py-8 max-w-7xl">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      
+      {# Boucle sur la liste des produits de sport pour les afficher en grille #}
       {% for produit in produitSport %}
         <a href="{{ path('app_show', {'id': produit.id}) }}" class="block">
           <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 text-center">
-            <div class="relative h-48 overflow-hidden">
+            
+            {# Image du produit (chaussure)#}
+            <div class="relative h-64 overflow-hidden">
               <img 
                 src="{{ asset('images/' ~ produit.image) }}" 
                 alt="Chaussure {{ produit.name }}" 
                 class="w-full h-full object-cover"
               >
             </div>
+
+            {# Détails du produit : nom et prix #}
             <div class="p-5">
               <h2 class="text-xl font-bold text-gray-900 mb-2">{{ produit.name }}</h2>
               <p class="text-lg font-semibold mb-2">{{ produit.price }} €</p>
             </div>
           </div>
         </a>
+      
+      {# Message affiché si aucun produit n'est disponible dans cette catégorie #}
       {% else %}
         <div class="col-span-full text-center py-12">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-gray-400 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

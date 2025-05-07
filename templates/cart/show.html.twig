@@ -4,19 +4,14 @@
 
 {% block content %}
 
-     
-    
-
 <div class="bg-gray-50 border-md rounded-md min-h-screen py-10">
     <div class="container mx-auto px-4 max-w-6xl">
         <!-- En-tête du panier -->
         <h1 class="text-3xl font-bold text-gray-900 mb-8">Votre Panier</h1>
-
        
-
         {% if items|length > 0 %}
             <div class="flex flex-col lg:flex-row gap-8">
-                <!-- Colonne de gauche : liste des produits -->
+                <!--  liste des produits -->
                 <div class="lg:w-2/3">
                     <div class="bg-white rounded-xl shadow-md overflow-hidden">
                         <div class="px-6 py-4 bg-indigo-600 text-white">
@@ -70,7 +65,7 @@
                     </div>
                 </div>
                 
-                <!-- Colonne de droite : récapitulatif -->
+                <!-- récapitulatif -->
                 <div class="lg:w-1/3">
                     <div class="bg-white rounded-xl shadow-md overflow-hidden sticky top-8">
                         <div class="px-6 py-4 bg-indigo-600 text-white">

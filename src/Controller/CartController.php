@@ -10,24 +10,27 @@ use App\Entity\Product;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-
-
 final class CartController extends AbstractController
 {
     #[Route('/panier/ajouter/{id}', name: 'cart_add', methods: ['POST'])]
     public function add(Product $product, Request $request, SessionInterface $session): Response
     {
+        // Récupère le panier depuis la session ou initialise un tableau vide
         $panier = $session->get('panier', []);
         $quantite = $request->request->getInt('quantity', 1);
 
+        // Si le produit est déjà dans le panier, on ajoute la quantité
         if (isset($panier[$product->getId()])) {
             $panier[$product->getId()] += $quantite;
         } else {
             $panier[$product->getId()] = $quantite;
         }
 
+        // Mise à jour du panier dans la session
         $session->set('panier', $panier);
+
         $this->addFlash('success_add_to_cart', 'Produit ajouté avec succès !');
+
         return $this->redirectToRoute('app_show', ['id' => $product->getId()]);
     }
 
@@ -37,9 +40,9 @@ final class CartController extends AbstractController
         $panier = $session->get('panier', []);
         $panierDetails = [];
         $total = 0;
-        $shipping = 5.0;
+        $shipping = 5.0; // frais de port fixes
 
-
+        // Parcours des produits dans le panier pour calculer le total
         foreach ($panier as $id => $quantity) {
             $product = $productRepository->find($id);
             if ($product) {
@@ -50,11 +53,10 @@ final class CartController extends AbstractController
                     'subtotal' => $subtotal,
                 ];
                 $total += $subtotal;
-
             }
         }
-        $totalWithShipping = $total + $shipping;
 
+        $totalWithShipping = $total + $shipping;
 
         return $this->render('cart/show.html.twig', [
             'items' => $panierDetails,
@@ -62,7 +64,7 @@ final class CartController extends AbstractController
             'shipping' => $shipping,
             'totalWithShipping' => $totalWithShipping,
         ]);
-}
+    }
 
     #[Route('/cart/update/{id}', name: 'cart_update', methods: ['POST'])]
     public function update(Product $product, Request $request, SessionInterface $session): Response
@@ -70,11 +72,13 @@ final class CartController extends AbstractController
         $panier = $session->get('panier', []);
         $quantite = $request->request->getInt('quantity', 1);
 
+        // Mise à jour de la quantité
         if ($quantite > 0) {
             $panier[$product->getId()] = $quantite;
         }
 
         $session->set('panier', $panier);
+
         return $this->redirectToRoute('app_cart');
     }
 
@@ -86,9 +90,5 @@ final class CartController extends AbstractController
         $session->set('panier', $panier);
 
         return $this->redirectToRoute('app_cart');
-}
-
-
-
-
+    }
 }

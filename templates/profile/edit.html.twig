@@ -9,11 +9,13 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div>
+            {# Champ de saisie pour le nom de famille #}
             {{ form_label(form.lastName, 'Nom', {'label_attr': {'class': 'block text-gray-700 font-semibold mb-2'}}) }}
             {{ form_widget(form.lastName, {'attr': {'class': 'w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500'}}) }}
             {{ form_errors(form.lastName) }}
           </div>
           <div>
+            {# Champ de saisie pour le prénom #}
             {{ form_label(form.firstName, 'Prénom', {'label_attr': {'class': 'block text-gray-700 font-semibold mb-2'}}) }}
             {{ form_widget(form.firstName, {'attr': {'class': 'w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500'}}) }}
             {{ form_errors(form.firstName) }}
@@ -21,13 +23,14 @@
         </div>
 
         <div class="mb-6">
+          {# Champ de modification de l'adresse email de l'utilisateur #}
           {{ form_label(form.email, 'Adresse e-mail', {'label_attr': {'class': 'block text-gray-700 font-semibold mb-2'}}) }}
           {{ form_widget(form.email, {'attr': {'class': 'w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500'}}) }}
           {{ form_errors(form.email) }}
         </div>
 
-
         <div class="mb-8">
+          {# Champ de l'adresse postale de l'utilisateur #}
           {{ form_label(form.address, 'Adresse de livraison', {'label_attr': {'class': 'block text-gray-700 font-semibold mb-2'}}) }}
           {{ form_widget(form.address, {'attr': {'class': 'w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500'}}) }}
           {{ form_errors(form.address) }}

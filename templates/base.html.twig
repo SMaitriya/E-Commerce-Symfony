@@ -4,46 +4,49 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Ma Boutique{% endblock %}</title>
+    
+    {# Chargement des icônes Font Awesome #}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-
     {% block stylesheets %}
-<script src="https://cdn.tailwindcss.com"></script>
-{% endblock %}
+        {# Importation de Tailwind CSS #}
+        <script src="https://cdn.tailwindcss.com"></script>
+    {% endblock %}
 </head>
 <body class="bg-gray-100 min-h-screen flex flex-col">
 
+    {# Inclusion de l'en-tête commun à toutes les pages #}
     {% include 'components/header.html.twig' %}
 
     <main class="flex-1 container mx-auto p-8">
 
-     {% for label, messages in app.flashes %}
-    {% for message in messages %}
-        <div class="mx-auto max-w-2xl mt-4 px-4 py-3 rounded shadow text-white
-            {% if label starts with 'success' %} bg-green-500
-            {% elseif label == 'error' %} bg-red-500
-            {% elseif label == 'warning' %} bg-yellow-500
-            {% else %} bg-blue-500
-            {% endif %}">
-            
-            {{ message }}
+        {# Affichage des messages flash (succès, erreur, etc.) stockés dans la session #}
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="mx-auto max-w-2xl mt-4 px-4 py-3 rounded shadow text-white
+                    {% if label starts with 'success' %} bg-green-500
+                    {% elseif label == 'error' %} bg-red-500
+                    {% elseif label == 'warning' %} bg-yellow-500
+                    {% else %} bg-blue-500
+                    {% endif %}">
+                    
+                    {{ message }}
 
-            {% if label == 'success_add_to_cart' %}
-                <a href="{{ path('app_cart') }}" class="ml-4 underline text-white font-semibold">Voir le panier</a>
-            {% endif %}
-        </div>
-    {% endfor %}
-{% endfor %}
+                    {# Lien vers le panier s'il s'agit d'un ajout réussi #}
+                    {% if label == 'success_add_to_cart' %}
+                        <a href="{{ path('app_cart') }}" class="ml-4 underline text-white font-semibold">Voir le panier</a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        {% endfor %}
 
-
-
-
+        {# Bloc de contenu principal qui sera défini dans les vues enfants #}
         {% block content %}
         {% endblock %}
     </main>
 
+    {# Inclusion du pied de page commun à toutes les pages #}
     {% include 'components/footer.html.twig' %}
 
 </body>
 </html>
-

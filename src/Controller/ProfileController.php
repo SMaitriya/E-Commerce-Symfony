@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Controller;
-
 use App\Form\ProfileFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,7 +18,6 @@ final class ProfileController extends AbstractController
             'controller_name' => 'ProfileController',
         ]);
     }
-
 
 
     #[Route('/profil/edit', name: 'app_profile_edit')]
