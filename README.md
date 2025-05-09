@@ -1,5 +1,7 @@
 # 🛍️ E-Boutique Laravel
 
+#### Site : https://projet-web-training.ovh/licence20/eboutique/public/
+
 Ce projet est une boutique en ligne développée avec Laravel. Il permet à un utilisateur de :
 
 - Naviguer dans un catalogue de produits par catégories
@@ -48,6 +50,22 @@ Mot de passe : tata
 
 - L'admin peut **créer, modifier, supprimer** des produits et des catégories.
 
+
+
+##  📦 Données de test (fixtures)
+Ce projet utilise Doctrine Fixtures pour générer automatiquement des données de test :
+
+- Catégories de produits
+
+- Produits
+
+- Description
+
+- Prix
+
+- Images
+
+
 ---
 
  ⚙️ Technologies utilisées
@@ -60,7 +78,3 @@ Mot de passe : tata
 
 ---
 
-## (Optionnel) Charger les données de test (fixtures) :
-
-```bash
-php bin/console doctrine:fixtures:load
