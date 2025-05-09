@@ -30,6 +30,7 @@ Ce projet est une boutique en ligne développée avec Symfony. Il permet à un u
 ### 🔐 Connexion et enregistrement
 - L'utilisateur peut **s'enregistrer** avec :
   - Nom
+  - Prénom
   - Email
   - Mot de passe
   - Adresse de livraison
