@@ -1,15 +1,17 @@
 # 🛍️ E-Boutique Laravel
 
 #### Site : https://projet-web-training.ovh/licence20/eboutique/public/
+#### Git : https://github.com/SMaitriya/E-Commerce-Symfony
 
 Ce projet est une boutique en ligne développée avec Laravel. Il permet à un utilisateur de :
 
 - Naviguer dans un catalogue de produits par catégories
 - Ajouter des produits au panier et modifier la quantité
 - Visualiser un récapitulatif de la commande avec frais de transport
+- Messages de validations/ajout
 - Commander uniquement après connexion
 - Créer un compte avec nom, email, mot de passe et adresse de livraison
-- Modifier son profil utilisateur
+- Consulter/Modifier son profil utilisateur
 - Gérer les produits dans un back-office (admin)
 
 ---
@@ -48,7 +50,7 @@ Email : toto@outlook.fr
 Mot de passe : tata
 ```
 
-- L'admin peut **créer, modifier, supprimer** des produits et des catégories.
+- L'admin peut **créer, modifier, supprimer** des produits
 
 
 
