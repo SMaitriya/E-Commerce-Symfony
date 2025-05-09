@@ -39,6 +39,7 @@ Ce projet est une boutique en ligne développée avec Symfony. Il permet à un u
 
 ### 👤 Mon compte
 - L'utilisateur connecté peut **voir et modifier son profil**.
+- Se déconnecter
 
 ---
 
@@ -49,6 +50,7 @@ Ce projet est une boutique en ligne développée avec Symfony. Il permet à un u
 ```
 Email : toto@outlook.fr
 Mot de passe : tata
+
 ```
 
 - L'admin peut **créer, modifier, supprimer** des produits
