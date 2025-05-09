@@ -45,13 +45,7 @@ Ce projet est une boutique en ligne développée avec Symfony. Il permet à un u
 
 ## 🛠️ Back-office (admin)
 
-- L'administration du **catalogue produit** est accessible uniquement avec ce compte :
 
-```
-Email : toto@outlook.fr
-Mot de passe : tata
-
-```
 
 - L'admin peut **créer, modifier, supprimer** des produits
 
