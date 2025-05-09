@@ -3,7 +3,7 @@
 #### Site : https://projet-web-training.ovh/licence20/eboutique/public/
 #### Git : https://github.com/SMaitriya/E-Commerce-Symfony
 
-Ce projet est une boutique en ligne développée avec Laravel. Il permet à un utilisateur de :
+Ce projet est une boutique en ligne développée avec Symfony. Il permet à un utilisateur de :
 
 - Naviguer dans un catalogue de produits par catégories
 - Ajouter des produits au panier et modifier la quantité
